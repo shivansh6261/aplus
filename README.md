@@ -1,36 +1,58 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+---routing files
 
-## Getting Started
+layout	.js .jsx .tsx	Layout
+page	.js .jsx .tsx	Page
+loading	.js .jsx .tsx	Loading UI
+not-found	.js .jsx .tsx	Not found UI
+error	.js .jsx .tsx	Error UI
+global-error	.js .jsx .tsx	Global error UI
+route	.js .ts	API endpoint
+template	.js .jsx .tsx	Re-rendered layout
+default	.js .jsx .tsx	Parallel route fallback page
 
-First, run the development server:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-## Learn More
+import mysql from 'mysql2/promise';
 
-To learn more about Next.js, take a look at the following resources:
+export const db = mysql.createPool({
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASS,
+    database: process.env.DB_NAME,
+});
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+try {
+    const connection = await db.getConnection();
+    console.log("database is connected");
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+} catch (err) {
+    console.log("their is some error", err);
+    process.exit(1)
 
-## Deploy on Vercel
+}
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+
+restricting access to certain routes (like /app) for only logged-in users is best done using middleware, server-side authentication, or protected client components.
+
+
+Middleware in Next.js is a powerful feature that allows you to run code before a request is completed, effectively intercepting and modifying the request and response flow within your application. It functions at a global level, enabling you to implement various functionalities like:
+
+    Authentication and Authorization:
+    Checking if a user is logged in or has the necessary permissions to access a specific page and redirecting them if not.
+    URL Rewrites and Redirects:
+    Dynamically changing the request URL or redirecting users to different pages based on certain conditions.
+    Header and Cookie Management:
+    Modifying request or response headers, setting or retrieving cookies for various purposes (e.g., A/B testing, localization).
+    Logging and Analytics:
+    Intercepting requests to log information or perform analytics before the request reaches the route handler.
+    A/B Testing:
+    Dynamically serving different versions of your site to users based on criteria like cookies or user groups.
+
+
+
+session managment is important for authentication required to move forward.

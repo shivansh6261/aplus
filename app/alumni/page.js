@@ -37,6 +37,8 @@ const AlumniPage = async () => {
   const [alumniData] = await db.execute("SELECT * FROM alumni");
 
   return (
+    <>
+  
     <div className="min-h-screen py-12 px-4">
       <h1 className="text-4xl font-extrabold text-center text-blue-800 mb-12">
         CSE Alumni Network
@@ -53,6 +55,7 @@ const AlumniPage = async () => {
         ))}
       </div>
     </div>
+  </>
   );
 };
 

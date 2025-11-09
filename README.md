@@ -126,4 +126,5 @@ Middleware in Next.js is a powerful feature that allows you to run code before a
 
 session managment is important for authentication required to move forward.
 
- 
+signoutproblemresolved
+The default signOut() triggers a server-side redirect flow; if the server response/redirect stalls (CSRF checks, pages config, or environment issues), the client can appear to "just load". By using redirect: false we avoid blocking on a server redirect and perform the navigation client-side immediately after the session is cleared client-side.

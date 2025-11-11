@@ -53,7 +53,7 @@ export default function Navbar() {
                 </Link>
                 <button
                   onClick={() => signIn()}
-                  className="border border-white px-4 py-2 rounded hover:bg-white hover:text-green-700 transition"
+                  className="border border-white px-4 py-2 rounded hover:bg-blue hover:text-green-700 transition"
                 >
                   Login
                 </button>
@@ -63,7 +63,7 @@ export default function Navbar() {
                 <button
                 onClick={() => handleSignOut('/')}
                 disabled={isSigningOut}
-                className="border border-white px-4 py-2 rounded hover:bg-white hover:text-red-700 transition disabled:opacity-60"
+                className="border border-white px-4 py-2 rounded hover:bg-blue hover:text-red-700 transition disabled:opacity-60"
               >
                 {isSigningOut ? 'Signing out...' : 'Logout'}
               </button>

@@ -63,7 +63,7 @@ export default function Navbar() {
                 <button
                 onClick={() => handleSignOut('/')}
                 disabled={isSigningOut}
-                className="border border-white px-4 py-2 rounded hover:bg-blue hover:text-red-700 transition disabled:opacity-60"
+                className="border border-white px-4 py-2 rounded hover:text-red-700 transition disabled:opacity-60 hover:bg-blue-900 hover:scale-3d"
               >
                 {isSigningOut ? 'Signing out...' : 'Logout'}
               </button>
